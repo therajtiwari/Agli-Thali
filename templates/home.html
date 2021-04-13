@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block links %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css') }}">
+
+{% endblock %}
+{% block content %}
+
+<div class="diet-select" style="padding: 3rem;">
+    <div class="container">
+
+        <div class="row">
+            <h4>Select Diet</h4>
+        </div>
+        <div class="row justify-content-start">
+
+            <div class="col-md-4 col-sm-4">
+                <button type="button" class="btn btn-success btn-c" href="{{url_for('home')}}">Veg</button>
+                <button type="button" class="btn btn-danger btn-c" href="{{url_for('home')}}">Non-Veg</button>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        {% for key,value in dishes.items()%}
+        <!-- <div class="col-xs-6 col-sm-3 dish_frame_{{ value }}" onclick="recipe('{{ key }}')" title="{{ key }}">
+            <img src="{{ url_for('static', filename = 'image_dataset/' + key + ' indian dish/Image_1.jpg') }}"
+                alt="{{ key }}" height="200px" width="100%" class="zoom" title="{{ key }}">
+            <h4 title="{{ key }}" style="text-transform: capitalize;">{{ key|truncate(15,False) }}</h4>
+        </div> -->
+        <div class="col-md-4 col-sm-6">
+
+            <div class="card-wrapper">
+                <div class="card-image">
+                    <img src="{{ url_for('static', filename = 'image_dataset/' + key + ' indian dish/Image_1.jpg') }}"
+                        alt="{{ key }}" class="zoom" title="{{ key }}">
+                </div>
+                <div class="card-info">
+                    <h4 title="{{ key }}" style="text-transform: capitalize;">{{ key|truncate(15,False) }}</h4>
+                </div>
+
+            </div>
+        </div>
+
+        {%endfor%}
+    </div>
+</div>
+
+
+{% endblock %}
