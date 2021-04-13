@@ -7,7 +7,8 @@ model = None
 model_data_frame = None
 
 
-def loadArtfacts():
+# loading the datasets and trained model
+def loadArtifacts():
     global data, model, model_data_frame
     data = pd.read_csv("./artifacts/cleaned_data.csv")
     model_data_frame = pd.read_csv("./artifacts/model_data.csv",
@@ -16,11 +17,7 @@ def loadArtfacts():
         model = pickle.load(f)
 
 
-# print(type(model))
-
-# loadArtfacts()
-
-
+# getting the names of all dishes
 def getDishNames():
     # global data
     dishes_names = data.name.to_list()
@@ -28,10 +25,7 @@ def getDishNames():
     return dishes_names, diet_of_dishes
 
 
-# a, b = getDishNames()
-# print(a, "\n", b)
-
-
+# getting the dishes based on diet(veg or non-veg)
 def getDietWiseDishes(diet):
     global data
 
@@ -45,6 +39,7 @@ def getDietWiseDishes(diet):
         return getDishNames()
 
 
+# getting the dishes based on states
 def getStateWiseDishes(state, diet):
     global data
     verify_state = state in data.state.to_list()
@@ -71,10 +66,7 @@ def getStateWiseDishes(state, diet):
             return getDishNames()
 
 
-# statedishes = getStateWiseDishes("Maharashtra", "vegetarian")
-# print(statedishes)
-
-
+# getting dishes based on the region
 def getRegionWiseDishes(region, diet):
     global data
     verify_region = region.title() in data.region.to_list
@@ -101,26 +93,19 @@ def getRegionWiseDishes(region, diet):
             return getDietWiseDishes(diet)
 
 
+# getting the name of all the states
 def getStateNames():
     global data
     return list(data.state.unique())
 
 
-# states = getStateNames()
-# print(states)
+# getting the youtube source video link of the dish
 def getRecipe(dish):
     global data
     return data.loc[data.name == dish, ["recipe"]].values[0][0]
 
 
-# rid = getRecipe("balu shahi")
-# print(rid)
-# print()
-
-# print()
-# print()
-
-
+# getting the top 12 recommendations with the help of the trained model
 def getRecommendation(dish):
     global model, model_data_frame
     X = model_data_frame[model_data_frame.index == dish]
@@ -132,9 +117,4 @@ def getRecommendation(dish):
             continue
         else:
             recommendations.append(recommended_dish)
-    # print(recommended_dish)
     return recommendations
-
-
-# rec = getRecommendation("idli")
-# print(rec)
