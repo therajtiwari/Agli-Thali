@@ -16,7 +16,8 @@
 
             <div class="col-md-4 col-sm-4">
                 <a type="button" class="btn btn-success btn-c" href="{{url_for('diet',name='vegetarian')}}">Veg</a>
-                <a type="button" class="btn btn-danger btn-c" href="{{url_for('diet',name='non-vegetarian')}}">Non-Veg</a>
+                <a type="button" class="btn btn-danger btn-c"
+                    href="{{url_for('diet',name='non-vegetarian')}}">Non-Veg</a>
 
             </div>
 
@@ -33,9 +34,9 @@
                 alt="{{ key }}" height="200px" width="100%" class="zoom" title="{{ key }}">
             <h4 title="{{ key }}" style="text-transform: capitalize;">{{ key|truncate(15,False) }}</h4>
         </div> -->
-        <div class="col-md-4 col-sm-6">
+        <div class="col-md-4 col-sm-6" title=" {{ key }}" onclick="recipe('{{ key }}')">
 
-            <div class="card-wrapper">
+            <div class="card-wrapper" onclick="recipe('{{ key }}')">
                 <div class="card-image">
                     <img src="{{ url_for('static', filename = 'image_dataset/' + key + ' indian dish/Image_1.jpg') }}"
                         alt="{{ key }}" class="zoom" title="{{ key }}">
@@ -46,27 +47,26 @@
 
             </div>
         </div>
-        
+
         {%endfor%}
     </div>
 </div>
 <nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item">
-    
-      <a class="page-link" href="{{url_for('page',pagenum = current_page-1)}}" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    {%for i in range(1, total_pages + 1)%}
-    <li class="page-item"><a class="page-link" href="{{url_for('page',pagenum = i)}}">{{i}}</a></li>
-      {%endfor%}
-      <a class="page-link" href="{{url_for('page',pagenum = current_page+1)}}" aria-label="Next">
-       
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
+    <ul class="pagination">
+        <li class="page-item">
+            <a class="page-link" href="{{url_for('page',pagenum = current_page-1)}}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        {%for i in range(1, total_pages + 1)%}
+        <li class="page-item"><a class="page-link" href="{{url_for('page',pagenum = i)}}">{{i}}</a></li>
+        {%endfor%}
+        <a class="page-link" href="{{url_for('page',pagenum = current_page+1)}}" aria-label="Next">
+
+            <span aria-hidden="true">&raquo;</span>
+        </a>
+        </li>
+    </ul>
 </nav>
 
 
