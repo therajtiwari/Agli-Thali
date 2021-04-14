@@ -53,5 +53,23 @@ def diet(name, pagenum):
         current_page=pagenum,
     )
 
+@app.route("/page/<int:pagenum>")
+def page(pagenum):
+    count = 21
+    dishes_names, diet_of_dishes = utils.getDishNames()
+    if (len(dishes_names) % count)==0:
+        total_pages = (len(dishes_names)/count)
+    else:
+        total_pages = round(len(dishes_names)/count)+1
+    dishes = dishes_names[count * (pagenum - 1):count * pagenum]
+    diet = ["all_diet"] * count
+    final_dishes = dict(zip(dishes, diet))
+    return render_template(
+        "home.html",
+        dishes=final_dishes,
+        total_pages=total_pages,
+        current_page=pagenum,
+    )
+
 if __name__ == "__main__":
     app.run(debug=True)

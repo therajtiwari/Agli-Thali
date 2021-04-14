@@ -46,10 +46,28 @@
 
             </div>
         </div>
-
+        
         {%endfor%}
     </div>
 </div>
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item">
+    
+      <a class="page-link" href="{{url_for('page',pagenum = current_page-1)}}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    {%for i in range(1, total_pages + 1)%}
+    <li class="page-item"><a class="page-link" href="{{url_for('page',pagenum = i)}}">{{i}}</a></li>
+      {%endfor%}
+      <a class="page-link" href="{{url_for('page',pagenum = current_page+1)}}" aria-label="Next">
+       
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
 
 
 {% endblock %}
