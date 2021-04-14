@@ -2,6 +2,7 @@ from flask import Flask, url_for, redirect
 from flask.templating import render_template
 from flask_jsglue import JSGlue
 import utils
+import wikipedia
 
 app = Flask(__name__)
 
@@ -86,6 +87,8 @@ def recipe(name):
     if name == "all":
         return redirect("/")
     name = name.lower()
+    summary = wikipedia.summary(name, sentences=5)
+    print(summary)
     all_dishes = dishes
     if name in all_dishes:
         recommended_dishes = utils.getRecommendation(name)
