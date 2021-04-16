@@ -1,8 +1,136 @@
 {% extends "base.html" %} {% block links %}
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/recipe.css') }}" />
 
-{% endblock %} {% block content %}
-<h1>
-    hello there
-</h1>
+
+{% endblock %}
+{% block content %}
+
+<div class="page-content">
+    <div class="info">
+        <div class="food-image-wrapper">
+            <div class="container">
+                <div class="row justify-content-center title">
+                    <div class="col-lg-8 col-md-8">
+                        <h2>{{name|upper }}</h2>
+                    </div>
+
+                </div>
+                <div class="row justify-content-center">
+
+                    <div class="col-lg-8 col-md-10 col-sm-12 img-box">
+                        <!-- <img class="main-image"
+                            src="{{url_for('static',filename='image_dataset/' +name+' indian dish'+'/Image_1.jpg')}}"
+                            alt=""> -->
+
+                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                                    class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                                    aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                                    aria-label="Slide 3"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                                    aria-label="Slide 4"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
+                                    aria-label="Slide 5"></button>
+                            </div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="{{url_for('static',filename='image_dataset/' +name+' indian dish'+'/Image_1.jpg')}}"
+                                        class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{url_for('static',filename='image_dataset/' +name+' indian dish'+'/Image_2.jpg')}}"
+                                        class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{url_for('static',filename='image_dataset/' +name+' indian dish'+'/Image_3.jpg')}}"
+                                        class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{url_for('static',filename='image_dataset/' +name+' indian dish'+'/Image_4.jpg')}}"
+                                        class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{url_for('static',filename='image_dataset/' +name+' indian dish'+'/Image_5.jpg')}}"
+                                        class="d-block w-100" alt="...">
+                                </div>
+
+                            </div>
+                            <button class="carousel-control-prev" type="button"
+                                data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button"
+                                data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="summary-link-wrapper">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 summary">
+                        <h5>{{summary}}</h5>
+                    </div>
+                    <div class="col-lg-4 mx-auto yt-thumbnail ">
+                        <div class=" mx-auto embed-responsive embed-responsive-16by9 ">
+                            <iframe width="90%" height="300" src="https://www.youtube.com/embed/{{ recipe_id }}"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;"
+                                allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="recommendation-wrapper">
+        <h2>Recommended Dishes:</h2>
+        <br>
+        <br>
+        <div class="owl-carousel owl-theme">
+
+            {% for dish in recommended_dishes %}
+            <div class="item">
+                <div class="dish-box" onclick="recipe('{{ dish }}')">
+                    <img src=" {{url_for('static',filename='image_dataset/' +dish+' indian dish'+'/Image_1.jpg')}}"
+                        alt="">
+                </div>
+                <div class="dish-name">
+                    <h5>{{dish|capitalize}}</h5>
+                </div>
+            </div>
+            {%endfor%}
+
+        </div>
+    </div>
+
+
+</div>
+
 {% endblock %}

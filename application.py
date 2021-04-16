@@ -87,19 +87,18 @@ def recipe(name):
     if name == "all":
         return redirect("/")
     name = name.lower()
-    summary = wikipedia.summary(name, sentences=5)
-    print(summary)
+    summary = wikipedia.summary(name, sentences=20)
+    # print(summary)
     all_dishes = dishes
     if name in all_dishes:
         recommended_dishes = utils.getRecommendation(name)
         recipe_id = utils.getRecipe(name)
 
-        return render_template(
-            "recipe.html",
-            current_dish=name,
-            recommended_dishes=recommended_dishes,
-            recipe_id=recipe_id,
-        )
+        return render_template("recipe.html",
+                               name=name,
+                               recommended_dishes=recommended_dishes,
+                               recipe_id=recipe_id,
+                               summary=summary)
 
     return render_template("recipe.html")
 

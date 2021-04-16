@@ -2,7 +2,6 @@
 
 {% block links %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css') }}">
-
 {% endblock %}
 {% block content %}
 
@@ -36,7 +35,7 @@
         </div> -->
         <div class="col-md-4 col-sm-6" title=" {{ key }}" onclick="recipe('{{ key }}')">
 
-            <div class="card-wrapper" onclick="recipe('{{ key }}')">
+            <div class="card-wrapper">
                 <div class="card-image">
                     <img src="{{ url_for('static', filename = 'image_dataset/' + key + ' indian dish/Image_1.jpg') }}"
                         alt="{{ key }}" class="zoom" title="{{ key }}">
