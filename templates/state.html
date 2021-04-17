@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block links %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/state.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<div class="container">
+<div style="display:inline-block;">Select state: </div>
+<div style="display:inline-block;" class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   {{state_selected}}
+  </button>
+    <ul class="dropdown-menu scroll-container" aria-labelledby="dropdownMenuButton">
+        {% for i in state %}
+            <li> <a type="button" class="dropdown-item" onclick="return state_change('{{ i }}')">{{i}}</a></li>
+         {% endfor %}
+    </ul>
+</div></div>
+
+<div class="container row justify-content-start">
+            <div class="col-md-4 col-sm-4">
+                <button class="btn btn-success btn-c" onclick = "return diet_state('vegetarian') ">Veg</button>
+                <button class="btn btn-danger btn-c"  onclick = "return diet_state('non-vegetarian') ">Non-Veg</button>
+            </div>
+        </div>
+
+<div class="container">
+  <div class="row">
+        {% for key,value in dishes.items()%}
+        <div class="col-md-4 col-sm-6" title=" {{ key }}" onclick="recipe('{{ key }}')">
+
+            <div class="card-wrapper">
+                <div class="card-image">
+                    <img src="{{ url_for('static', filename = 'image_dataset/' + key + ' indian dish/Image_1.jpg') }}"
+                        alt="{{ key }}" class="zoom" title="{{ key }}">
+                </div>
+                <div class="card-info">
+                    <h4 title="{{ key }}" style="text-transform: capitalize;">{{ key|truncate(15) }}</h4>
+                </div>
+
+            </div>
+        </div>
+
+        {%endfor%}
+    </div>
+</div>
+
+
+<script>
+  var state = "{{ state_selected }}";
+  function state_change(stateName){
+    state = stateName;
+    window.location.href = Flask.url_for('state', {'name':state});
+  }
+
+  function diet_state(diet_name){
+    var diet = diet_name;
+    window.location.href = Flask.url_for('state', {'name':state, 'diet': diet});
+  }
+
+</script>
+{% endblock %}

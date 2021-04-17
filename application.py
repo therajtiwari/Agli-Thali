@@ -47,13 +47,13 @@ def diet(name, pagenum):
         total_pages = (len(dishes_names) / count)
     else:
         total_pages = round(len(dishes_names) / count) + 1
-    dishes = dishes_names[count * (pagenum - 1):count * pagenum]
+    dishes_names = dishes_names[count * (pagenum - 1):count * pagenum]
 
     if name == "vegetarian" or name == "non-vegetarian":
         diet = diet[count * (pagenum - 1):count * pagenum]
     else:
         diet = ["all_diet"] * count
-    final_dishes = dict(zip(dishes, diet))
+    final_dishes = dict(zip(dishes_names, diet))
     print(final_dishes)
     return render_template("home.html",
                            dishes=final_dishes,
@@ -71,9 +71,9 @@ def page(pagenum):
         total_pages = (len(dishes_names) / count)
     else:
         total_pages = round(len(dishes_names) / count) + 1
-    dishes = dishes_names[count * (pagenum - 1):count * pagenum]
+    dishes_names = dishes_names[count * (pagenum - 1):count * pagenum]
     diet = ["all_diet"] * count
-    final_dishes = dict(zip(dishes, diet))
+    final_dishes = dict(zip(dishes_names, diet))
     return render_template("home.html",
                            dishes=final_dishes,
                            total_pages=total_pages,
@@ -101,6 +101,38 @@ def recipe(name):
                                summary=summary)
 
     return render_template("recipe.html")
+
+@app.route("/state", defaults = {"name": "Gujarat", "diet": "all", "pagenum": 1})
+@app.route("/state/<name>", defaults = {"diet": "all","pagenum": 1})
+@app.route("/state/<name>/<diet>", defaults = {"pagenum": 1})
+@app.route("/state/<name>/<diet>/<int:pagenum>") 
+def state(name, diet, pagenum):
+    state =  utils.getStateNames()
+    state_selected = name
+    dishes_names,diet_of_dishes = utils.getStateWiseDishes(name, diet)
+    count = 21
+    if (len(dishes_names) % count) == 0:
+        total_pages = (len(dishes_names) / count)
+    else:
+        total_pages = round(len(dishes_names) / count) + 1
+    dishes_names = dishes_names[count * (pagenum - 1):count * pagenum]
+
+    if name == "vegetarian" or name == "non-vegetarian":
+        diet = diet[count * (pagenum - 1):count * pagenum]
+    else:
+        diet = ["all_diet"] * count
+    final_dishes = dict(zip(dishes_names, diet))
+    return render_template("state.html",
+                      
+                            state = state, 
+                            state_selected = state_selected,
+                            dishes = final_dishes, 
+                            current_diet = diet, 
+                            total_pages = total_pages, 
+                            current_page = pagenum  
+                           )
+   
+                        
 
 
 if __name__ == "__main__":
