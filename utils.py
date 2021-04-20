@@ -69,7 +69,7 @@ def getStateWiseDishes(state, diet):
 # getting dishes based on the region
 def getRegionWiseDishes(region, diet):
     global data
-    verify_region = region.title() in data.region.to_list
+    verify_region = region.title() in data.region.to_list()
     diet = diet.lower()
     if diet == "vegetarian" or diet == "non-vegetarian":
         if verify_region:

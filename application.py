@@ -131,6 +131,35 @@ def state(name, diet, pagenum):
                             total_pages = total_pages, 
                             current_page = pagenum  
                            )
+
+@app.route("/region", defaults = {"name": "all regions", "diet": "all", "pagenum": 1})
+@app.route("/region/<name>", defaults = {"diet": "all", "pagenum": 1})
+@app.route("/region/<name>/<diet>", defaults = {"pagenum": 1})
+@app.route("/region/<name>/<diet>/<int:pagenum>")
+def region(name,diet,pagenum):
+    selected_region = name
+    dishes_names,diet_of_dishes = utils.getRegionWiseDishes(name, diet)
+    count = 21
+    if (len(dishes_names) % count) == 0:
+        total_pages = (len(dishes_names) / count)
+    else:
+        total_pages = round(len(dishes_names) / count) + 1
+    
+    dishes_names = dishes_names[count * (pagenum - 1):count * pagenum]
+    if name == "vegetarian" or name == "non-vegetarian":
+        diet = diet[count * (pagenum - 1):count * pagenum]
+    else:
+        diet = ["all_diet"] * count
+        
+    final_dishes = dict(zip(dishes_names, diet))
+    return render_template("region.html",
+                            selected_region = selected_region,
+                            dishes = final_dishes, 
+                            current_diet = diet, 
+                            total_pages = total_pages, 
+                            current_page = pagenum  
+                           )
+
    
                         
 

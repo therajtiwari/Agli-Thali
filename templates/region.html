@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block links %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/region.css') }}">
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container row justify-content-start">
+            <div class="col-md-4 col-sm-4">
+                <button class="btn btn-success btn-c" onclick = "return diet_region('vegetarian') ">Veg</button>
+                <button class="btn btn-danger btn-c"  onclick = "return diet_region('non-vegetarian') ">Non-Veg</button>
+            </div>
+        </div>
+<div class="container">
+<div class="topnav">
+{% if selected_region == "north" %}
+  <a class="active" type="button" onclick="return region_change('north')">North</a>
+{% else %}
+  <a onclick="return region_change('north')">North</a>
+{% endif %}
+{% if selected_region == "south" %}
+  <a class="active" onclick="return region_change('north')">South</a>
+{% else %}
+  <a onclick="return region_change('south')">south</a>
+{% endif %}
+{% if selected_region == "north" %}
+  <a class="active" onclick="return region_change('central')">Central</a>
+{% else %}
+  <a onclick="return region_change('central')">Central</a>
+{% endif %}
+{% if selected_region == "east" %}
+  <a class="active" onclick="return region_change('east')">East</a>
+{% else %}
+  <a onclick="return region_change('east')">East</a>
+{% endif %}
+{% if selected_region == "north east" %}
+  <a class="active" onclick="return region_change('north east')">North East</a>
+{% else %}
+  <a onclick="return region_change('north east')">North East</a>
+{% endif %}
+{% if selected_region == "north" %}
+  <a class="active" onclick="return region_change('west')">West</a>
+{% else %}
+  <a onclick="return region_change('west')">West</a>
+{% endif %}
+{% if selected_region == "all regions" %}
+  <a class="active" onclick="return region_change('all regions')">All Regions</a>
+{% else %}
+  <a onclick="return region_change('all regions')">All Regions</a>
+{% endif %}
+</div>
+</div>
+<div class="container">
+  <div class="row">
+        {% for key,value in dishes.items()%}
+        <div class="col-md-4 col-sm-6" title=" {{ key }}" onclick="recipe('{{ key }}')">
+
+            <div class="card-wrapper">
+                <div class="card-image">
+                    <img src="{{ url_for('static', filename = 'image_dataset/' + key + ' indian dish/Image_1.jpg') }}"
+                        alt="{{ key }}" class="zoom" title="{{ key }}">
+                </div>
+                <div class="card-info">
+                    <h4 title="{{ key }}" style="text-transform: capitalize;">{{ key|truncate(15) }}</h4>
+                </div>
+
+            </div>
+        </div>
+
+        {%endfor%}
+    </div>
+</div>
+<script>
+  var region = "{{ selected_region }}";
+
+  function region_change(regionName){
+    region = regionName;
+    window.location.href = Flask.url_for('region', {'name':region});
+  }
+
+  function diet_region(diet_name){
+    var diet = diet_name;
+    window.location.href = Flask.url_for('region', {'name':region, "diet": diet});
+  }
+
+</script>
+
+{% endblock %}
