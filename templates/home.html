@@ -5,23 +5,25 @@
 {% endblock %}
 {% block content %}
 
-<div class="diet-select" style="padding: 3rem;">
+<div class="diet-select" style="padding: 0rem;">
     <div class="container">
-
         <div class="row">
-            <h4>Select Diet</h4>
+            <div class="col-md-4 col-sm-4">
+                <h4>Select Diet</h4>
+            </div>
         </div>
-        <div class="row justify-content-start">
+        <div class="row ">
 
             <div class="col-md-4 col-sm-4">
                 <a type="button" class="btn btn-success btn-c" href="{{url_for('diet',name='vegetarian')}}">Veg</a>
-                <a type="button" class="btn btn-danger btn-c" href="{{url_for('diet',name='non-vegetarian')}}">Non-Veg</a>
-
+                <a type="button" class="btn btn-danger btn-c"
+                    href="{{url_for('diet',name='non-vegetarian')}}">Non-Veg</a>
             </div>
-
         </div>
-
     </div>
+</div>
+<div class="container ">
+    <hr class="mt-4 mb-5" />
 </div>
 
 <div class="container">
@@ -51,21 +53,21 @@
 </div>
 
 <nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item">
-      <a class="page-link"  href="{{url_for('page',pagenum = current_page-1)}}" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    {%for i in range(1, total_pages + 1)%}
-    <li class="page-item"><a class="page-link" href="{{url_for('page',pagenum = i)}}">{{i}}</a></li>
-     {%endfor%}
-    <li class="page-item">
-      <a class="page-link" href="{{url_for('page',pagenum = current_page+1)}}" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
+    <ul class="pagination">
+        <li class="page-item">
+            <a class="page-link" href="{{url_for('page',pagenum = current_page-1)}}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        {%for i in range(1, total_pages + 1)%}
+        <li class="page-item"><a class="page-link" href="{{url_for('page',pagenum = i)}}">{{i}}</a></li>
+        {%endfor%}
+        <li class="page-item">
+            <a class="page-link" href="{{url_for('page',pagenum = current_page+1)}}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
 </nav>
 
 {% endblock %}

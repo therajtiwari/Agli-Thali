@@ -10,27 +10,46 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <div class="container">
-<div style="display:inline-block;">Select state: </div>
-<div style="display:inline-block;" class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-   {{state_selected}}
-  </button>
-    <ul class="dropdown-menu scroll-container" aria-labelledby="dropdownMenuButton">
-        {% for i in state %}
-            <li> <a type="button" class="dropdown-item" onclick="return state_change('{{ i }}')">{{i}}</a></li>
-         {% endfor %}
-    </ul>
-</div></div>
-
-<div class="container row justify-content-start">
-            <div class="col-md-4 col-sm-4">
-                <button class="btn btn-success btn-c" onclick = "return diet_state('vegetarian') ">Veg</button>
-                <button class="btn btn-danger btn-c"  onclick = "return diet_state('non-vegetarian') ">Non-Veg</button>
+    <div class="row">
+        <div class="col-md-6 col-sm-6">
+            <h4 style="display: inline-block; margin-right: 2rem;">Select state: </h4>
+            <div class="dropdown" style="display: inline-block;">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{state_selected}}
+                </button>
+                <ul class="dropdown-menu scroll-container" aria-labelledby="dropdownMenuButton">
+                    {% for i in state %}
+                    <li> <a type="button" class="dropdown-item" onclick="return state_change('{{ i }}')">{{i}}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
             </div>
+
         </div>
+    </div>
+
+</div>
+<div class="container ">
+    <hr class="mt-4 mb-1" />
+</div>
+
 
 <div class="container">
-  <div class="row">
+    <div class="row">
+        <div class="col-md-6 col-sm-">
+            <button class="btn btn-success btn-c" onclick="return diet_state('vegetarian') ">Veg</button>
+            <button class="btn btn-danger btn-c" onclick="return diet_state('non-vegetarian') ">Non-Veg</button>
+        </div>
+    </div>
+</div>
+
+<div class="container ">
+    <hr class="mt-4 mb-1" />
+</div>
+
+<div class="container">
+    <div class="row">
         {% for key,value in dishes.items()%}
         <div class="col-md-4 col-sm-6" title=" {{ key }}" onclick="recipe('{{ key }}')">
 
@@ -52,16 +71,16 @@
 
 
 <script>
-  var state = "{{ state_selected }}";
-  function state_change(stateName){
-    state = stateName;
-    window.location.href = Flask.url_for('state', {'name':state});
-  }
+    var state = "{{ state_selected }}";
+    function state_change(stateName) {
+        state = stateName;
+        window.location.href = Flask.url_for('state', { 'name': state });
+    }
 
-  function diet_state(diet_name){
-    var diet = diet_name;
-    window.location.href = Flask.url_for('state', {'name':state, 'diet': diet});
-  }
+    function diet_state(diet_name) {
+        var diet = diet_name;
+        window.location.href = Flask.url_for('state', { 'name': state, 'diet': diet });
+    }
 
 </script>
 {% endblock %}
