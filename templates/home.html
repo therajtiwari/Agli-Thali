@@ -54,11 +54,15 @@
 
 <nav aria-label="Page navigation example">
     <ul class="pagination">
-        <li class="page-item">
-            <a class="page-link" href="{{url_for('page',pagenum = current_page-1)}}" aria-label="Previous">
+        <!-- <li class="page-item">
+            <a   href="{{url_for('page',pagenum = current_page-1)}}" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
             </a>
         </li>
+
+
+
+
         {%for i in range(1, total_pages + 1)%}
         <li class="page-item"><a class="page-link" href="{{url_for('page',pagenum = i)}}">{{i}}</a></li>
         {%endfor%}
@@ -66,7 +70,47 @@
             <a class="page-link" href="{{url_for('page',pagenum = current_page+1)}}" aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
             </a>
+        </li> -->
+
+        {% if current_page!=1 %}
+
+        if{% if page_type=="main" %}
+        <li class="page-item">
+            <a class="page-link" href="{{url_for('page',pagenum=current_page-1) }}" aria-label="Previous">
+                <span aria-hidden="true">Prev</span>
+            </a>
         </li>
+        {%else%}
+        <li class="page-item">
+            <a class="page-link" href="{{url_for('diet',name=current_diet, pagenum=current_page-1) }}"
+                aria-label="Previous">
+                <span aria-hidden="true">Prev</span>
+            </a>
+        </li>
+        {% endif%}
+        {% endif%}
+
+
+        {% for i in range(1, total_pages + 1) %}
+        {% if i==current_page %}
+        {% if page_type=="main" %}
+        <li class="page-item">
+            <a class="page-link" href="{{url_for('page',pagenum=i) }}" aria-label="Previous">
+                <span aria-hidden="true">Curr</span>
+            </a>
+        </li>
+        {% else %}
+        <li class="page-item">
+            <a class="page-link" href="{{url_for('diet',name=current_diet, pagenum=i) }}" aria-label="Previous">
+                <span aria-hidden="true">current</span>
+            </a>
+        </li>
+        {% endif %}
+
+        
+        {% endif% }
+
+        {% endfor%}
     </ul>
 </nav>
 
