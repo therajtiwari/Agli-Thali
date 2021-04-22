@@ -102,7 +102,7 @@ def recipe(name):
 
     return render_template("recipe.html")
 
-@app.route("/state", defaults = {"name": "Gujarat", "diet": "all", "pagenum": 1})
+@app.route("/state", defaults = {"name": "All states", "diet": "all", "pagenum": 1})
 @app.route("/state/<name>", defaults = {"diet": "all","pagenum": 1})
 @app.route("/state/<name>/<diet>", defaults = {"pagenum": 1})
 @app.route("/state/<name>/<diet>/<int:pagenum>") 
