@@ -86,7 +86,8 @@ def recipe(name):
     if name == "all":
         return redirect("/")
     name = name.lower()
-    summary = wikipedia.summary(name, sentences=20)
+    print(name)
+    summary = wikipedia.summary(name + " indian dish", sentences=10)
     # print(summary)
     all_dishes = dishes
     if name in all_dishes:
