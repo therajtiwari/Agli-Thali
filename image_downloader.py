@@ -4,6 +4,10 @@ import os
 
 data = pd.read_csv("cleaned_data.csv")
 names = data.name[1:]
+# names = [
+#     'tandoori fish tikka', 'currivepillai sadam', 'dosa', 'kolim jawla',
+#     'saath', 'bajri no rotlo', 'daal dhokli', 'kutchi dabeli'
+# ]
 
 for n in names:
 
