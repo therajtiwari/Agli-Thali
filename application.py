@@ -1,4 +1,3 @@
-from os import confstr
 from flask import Flask, url_for, redirect
 from flask.templating import render_template
 from flask_jsglue import JSGlue
