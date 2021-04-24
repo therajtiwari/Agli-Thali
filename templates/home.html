@@ -56,7 +56,8 @@
 
         <div class="row">
             <div class="col-md-10 col-sm-10 col-10 " style="margin: 1rem;">
-                <ul class="pagination">
+                <ul class="pagination" style="width:100%">
+
                     {% if current_page!=1 %}
                     {% if page_type==" main" %} <li><a href="{{ url_for('page', pagenum = current_page - 1) }}"
                             aria-label="Previous"><span aria-hidden="true">Prev</span></a></li>

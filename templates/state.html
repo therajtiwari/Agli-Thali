@@ -70,6 +70,57 @@
 </div>
 
 
+
+
+
+<!-- {# PAGINATION #} -->
+
+<nav aria-label="Page navigation example" style="margin: auto;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-sm-10 col-10 " style="margin: 1rem;">
+                <ul class="pagination" style="width:100%">
+                    {% if total_pages>0 %}
+                    {% if current_page != 1 %}
+                    <li><a href="{{ url_for('state', name = state_selected, diet = current_diet, pagenum = current_page - 1) }}"
+                            aria-label="Previous"><span aria-hidden="true">Prev</span></a></li>
+                    {% endif %}
+
+                    {% for i in range(1, total_pages + 1) %}
+
+                    {% if i == current_page %}
+                    <li class="active"><a
+                            href="{{ url_for('state', name = state_selected, diet = current_diet, pagenum = i) }}">{{
+                            i }}<span class="sr-only">(current)</span></a></li>
+
+                    {% else %}
+                    <li><a href="{{ url_for('state', name = state_selected, diet = current_diet, pagenum = i) }}">{{ i
+                            }}<span class="sr-only">(current)</span></a></li>
+                    {% endif %}
+
+                    {% endfor %}
+
+                    {% if current_page != total_pages %}
+                    <li><a href="{{ url_for('state', name = selected_state, diet = current_diet, pagenum = current_page + 1) }}"
+                            aria-label="Next"><span aria-hidden="true">Next</span></a></li>
+                    {% endif %}
+                    {% else %}
+                    <div class="div" style="width:100%;text-align: center">
+                        <h2>It's quite lonely here.</h2>
+                    </div>
+
+                    {% endif %}
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</nav>
+
+
 <script>
     var state = "{{ state_selected }}";
     function state_change(stateName) {
