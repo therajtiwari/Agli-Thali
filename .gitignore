@@ -117,6 +117,8 @@ env/
 .env/
 myvenv/
 .myvenv/
+my_env/
+.my_env/
 
 # Spyder project settings
 .spyderproject
