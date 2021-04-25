@@ -11,7 +11,7 @@ if "recipe" not in data.columns:
 
 # searching for ID using videosSearch module
 def getVideoID(dish):
-    videosSearch = VideosSearch(str(dish + "indian dish recipe"), limit=1)
+    videosSearch = VideosSearch(str(dish) + " recipe", limit=1)
     info = videosSearch.result()
     return (((info["result"])[0]["id"]))
 

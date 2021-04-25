@@ -27,10 +27,7 @@ def getDishNames():
 # getting the dishes based on diet(veg or non-veg)
 def getDietWiseDishes(diet):
     global data
-    if diet == "vegetarian":
-        df = data.loc[data.diet == diet, ["name", "diet"]]
-        return df.name, df.diet
-    elif diet == "non-vegetarian":
+    if diet == "vegetarian" or diet == "non-vegetarian":
         df = data.loc[data.diet == diet, ["name", "diet"]]
         return df.name, df.diet
     else:

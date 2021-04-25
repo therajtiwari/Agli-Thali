@@ -2,12 +2,9 @@ from bing_image_downloader import downloader
 import pandas as pd
 import os
 
+# reading the dataset
 data = pd.read_csv("cleaned_data.csv")
 names = data.name[1:]
-# names = [
-#     'tandoori fish tikka', 'currivepillai sadam', 'dosa', 'kolim jawla',
-#     'saath', 'bajri no rotlo', 'daal dhokli', 'kutchi dabeli'
-# ]
 
 for n in names:
 
@@ -15,9 +12,10 @@ for n in names:
     # print(path)
     if os.path.exists(path):
         continue
-        # print("yes for ", n)
+
     print("name is", n)
     query_string = n + " indian dish"
+    # downloading using bing downloader
     downloader.download(query_string,
                         limit=5,
                         output_dir='static/image_dataset',
