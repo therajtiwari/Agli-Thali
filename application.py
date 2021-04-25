@@ -44,7 +44,7 @@ def diet(name, pagenum):
     count = 21
     dishes_names, diet = utils.getDietWiseDishes(name)
     if (len(dishes_names) % count) == 0:
-        total_pages = (len(dishes_names) / count)
+        total_pages = round(len(dishes_names) / count)
     else:
         total_pages = round(len(dishes_names) / count) + 1
     dishes_names = dishes_names[count * (pagenum - 1):count * pagenum]
@@ -68,7 +68,7 @@ def page(pagenum):
     count = 21
     dishes_names, diet_of_dishes = utils.getDishNames()
     if (len(dishes_names) % count) == 0:
-        total_pages = (len(dishes_names) / count)
+        total_pages = round(len(dishes_names) / count)
     else:
         total_pages = round(len(dishes_names) / count) + 1
     dishes_names = dishes_names[count * (pagenum - 1):count * pagenum]
@@ -129,7 +129,7 @@ def state(name, diet, pagenum):
     dishes_names, diet_of_dishes = utils.getStateWiseDishes(name, diet)
     count = 21
     if (len(dishes_names) % count) == 0:
-        total_pages = (len(dishes_names) / count)
+        total_pages = round(len(dishes_names) / count)
     else:
         total_pages = round(len(dishes_names) / count) + 1
     dishes_names = dishes_names[count * (pagenum - 1):count * pagenum]
@@ -163,7 +163,7 @@ def region(name, diet, pagenum):
     dishes_names, diet_of_dishes = utils.getRegionWiseDishes(name, diet)
     count = 21
     if (len(dishes_names) % count) == 0:
-        total_pages = (len(dishes_names) / count)
+        total_pages = round(len(dishes_names) / count)
     else:
         total_pages = round(len(dishes_names) / count) + 1
 
