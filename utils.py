@@ -19,7 +19,6 @@ def loadArtifacts():
 
 # getting the names of all dishes
 def getDishNames():
-    # global data
     dishes_names = data.name.to_list()
     diet_of_dishes = data.diet.to_list()
     return dishes_names, diet_of_dishes
@@ -28,7 +27,6 @@ def getDishNames():
 # getting the dishes based on diet(veg or non-veg)
 def getDietWiseDishes(diet):
     global data
-
     if diet == "vegetarian":
         df = data.loc[data.diet == diet, ["name", "diet"]]
         return df.name, df.diet
@@ -36,7 +34,7 @@ def getDietWiseDishes(diet):
         df = data.loc[data.diet == diet, ["name", "diet"]]
         return df.name, df.diet
     else:
-        return getDishNames()
+        return getDishNames()  #no filtering (both type of diet)
 
 
 # getting the dishes based on states
@@ -49,12 +47,11 @@ def getStateWiseDishes(state, diet):
             if state == "All State":
                 return getDietWiseDishes(diet)
             else:
-                print("hereeeeeeeeeeeeee")
                 df = data.loc[(data.state == state) & (data.diet == diet),
                               ["name", "diet"]]
                 return df.name, df.diet
         else:
-            return getDietWiseDishes(diet)
+            return getDietWiseDishes(diet)  #returning all states
     else:
         if verify_state:
             if state == "All State":
@@ -80,7 +77,7 @@ def getRegionWiseDishes(region, diet):
                               (data.diet == diet), ['name', 'diet']]
                 return df.name, df.diet
         else:
-            return getDietWiseDishes(diet)
+            return getDietWiseDishes(diet)  #returning all regions
     else:
         if verify_region:
             if region == "All Region":
@@ -90,7 +87,7 @@ def getRegionWiseDishes(region, diet):
                               ['name', 'diet']]
                 return df.name, df.diet
         else:
-            return getDietWiseDishes(diet)
+            return getDietWiseDishes(diet)  #returning all regions
 
 
 # getting the name of all the states
@@ -113,7 +110,7 @@ def getRecommendation(dish):
     recommendations = []
     for dish_index in dishes_index.flatten():
         recommended_dish = model_data_frame.index[dish_index]
-        if recommended_dish == dish:
+        if recommended_dish == dish:  #self-dish
             continue
         else:
             recommendations.append(recommended_dish)

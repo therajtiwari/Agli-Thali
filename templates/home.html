@@ -25,11 +25,7 @@
 <div class="container">
     <div class="row">
         {% for key,value in dishes.items()%}
-        <!-- <div class="col-xs-6 col-sm-3 dish_frame_{{ value }}" onclick="recipe('{{ key }}')" title="{{ key }}">
-            <img src="{{ url_for('static', filename = 'image_dataset/' + key + ' indian dish/Image_1.jpg') }}"
-                alt="{{ key }}" height="200px" width="100%" class="zoom" title="{{ key }}">
-            <h4 title="{{ key }}" style="text-transform: capitalize;">{{ key|truncate(15,False) }}</h4>
-        </div> -->
+
         <div class="col-md-4 col-sm-6" title=" {{ key }}" onclick="recipe('{{ key }}')">
             <div class="card-wrapper">
                 <div class="card-image">
