@@ -1,3 +1,12 @@
+
+<p align="center">
+  <img alt="logo" src="https://raw.githubusercontent.com/therajtiwari/MusicX/main/screenshots/cover.png" width="70%" max-width="100%">
+</p>
+
+<h1 align="center">
+MusicX : A React Music Player
+</h1>
+
 # AgliThali- An Indian Food Recommender
 
 ## General info
