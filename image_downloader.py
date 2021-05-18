@@ -1,17 +1,11 @@
 from bing_image_downloader import downloader
 import pandas as pd
-import os
 
 # reading the dataset
 data = pd.read_csv("cleaned_data.csv")
 names = data.name[1:]
 
 for n in names:
-
-    path = "./image_dataset/" + n + "\indian dish" + "/Image_1.jpg"
-    # print(path)
-    if os.path.exists(path):
-        continue
 
     print("name is", n)
     query_string = n + " indian dish"

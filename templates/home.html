@@ -88,25 +88,6 @@
                     {% endfor%}
 
 
-                    <!-- {% for i in range(1, total_pages + 1) %}
-                            {% if i == current_page %}
-                                {% if page_type == "main" %}
-                                    <li class="active"><a href="{{ url_for('page', pagenum = i) }}">{{ i }}<span class="sr-only">(current)</span></a></li>
-                                {% else %}
-                                    <li class="active"><a href="{{ url_for('diet', name = current_diet, pagenum = i) }}">{{ i }}<span class="sr-only">(current)</span></a></li>
-                                {% endif %}
-                
-                            {% else %}
-                                {% if page_type == "main" %}
-                                    <li><a href="{{ url_for('page', pagenum = i) }}">{{ i }}<span class="sr-only">(current)</span></a></li>
-                                {% else %}
-                                    <li><a href="{{ url_for('diet', name = current_diet, pagenum = i) }}">{{ i }}<span class="sr-only">(current)</span></a></li>
-                                {% endif %}
-                            {% endif %}
-                      
-                        {% endfor %} -->
-
-
                     {% if current_page != total_pages %}
                     {% if page_type == "main" %}
                     <li><a href="{{ url_for('page', pagenum = current_page + 1) }}" aria-label="Next"><span

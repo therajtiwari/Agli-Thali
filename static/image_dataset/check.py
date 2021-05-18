@@ -19,20 +19,24 @@ def getNullImages():
             # if (count < 5):
             #     l.append(path)
             l.append(n)
+    print(l)
 
 
 def renameImages():
     for n in os.listdir(d):
         if (n != "check.py" and n != "cleaned_data.csv"):
             for file in os.listdir(os.path.join(d, n)):
-
                 base = os.path.splitext(file)
                 thisfile = os.path.join(d, n, file)
-                ext = base[1]
                 name = base[0]
+                ext = base[1]
                 if (ext != ".jpg"):
                     fname = os.path.join(d, n, name + ".jpg")
                     # print(thisfile, fpath)
                     os.rename(thisfile, fname)
 
     print("\n")
+
+
+getNullImages()
+renameImages()

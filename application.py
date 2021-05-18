@@ -10,7 +10,6 @@ jsglue = JSGlue()
 jsglue.init_app(app)
 
 utils.loadArtifacts()
-
 dishes, diet_of_dishes = utils.getDishNames()
 
 
@@ -18,7 +17,6 @@ dishes, diet_of_dishes = utils.getDishNames()
 def home():
     # return "Hello world"
     dishes_names, diet_of_dishes = utils.getDishNames()
-
     # pagination
     count = 21
     total_pages = round(
