@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="logo" src="https://raw.githubusercontent.com/therajtiwari/AgliThali/main/screenshots/cover.png?token=ANH3SQL5S7QCGPFOGQDE6NTAUPWIO" width="30%" max-width="100%">
+  <img alt="logo" src="screenshots/cover.png" width="30%" max-width="100%">
 </p>
 
 <h1 align="center">
@@ -60,16 +60,16 @@ I assume that you have `git` and `virtualenv` installed.
 ## Project Screenshots:
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/therajtiwari/AgliThali/main/screenshots/ss1.png?token=ANH3SQPPJANSJJ3KTFEQPZDAUPWHC" alt="ss1" width="80%">
+  <img src="screenshots/ss1.png" alt="ss1" width="80%">
 <br/>
 <br/>
-  <img src="https://raw.githubusercontent.com/therajtiwari/AgliThali/main/screenshots/ss2.png?token=ANH3SQI2KOB4V6YC6HTH5XDAUPWQU" alt="ss2"  width="80%">
+  <img src="screenshots/ss2.png" alt="ss2"  width="80%">
   <br/>
   <br/>
-  <img src="https://raw.githubusercontent.com/therajtiwari/AgliThali/main/screenshots/ss3.png?token=ANH3SQI4DNWPG66X4ZAMI6LAUPWR4" alt="ss2"  width="80%">
+  <img src="screenshots/ss3.png" alt="ss2"  width="80%">
    <br/>
    <br/>
-  <img src="https://raw.githubusercontent.com/therajtiwari/AgliThali/main/screenshots/ss4.png?token=ANH3SQNDUYKND7FAQN4LUKDAUPWTO" alt="ss4"  width="80%">
+  <img src="screenshots/ss4.png" alt="ss4"  width="80%">
         
 </p>
 
