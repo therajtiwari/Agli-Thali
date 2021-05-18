@@ -1,18 +1,16 @@
-
 <p align="center">
-  <img alt="logo" src="https://raw.githubusercontent.com/therajtiwari/MusicX/main/screenshots/cover.png" width="70%" max-width="100%">
+  <img alt="logo" src="https://raw.githubusercontent.com/therajtiwari/AgliThali/main/screenshots/cover.png?token=ANH3SQL5S7QCGPFOGQDE6NTAUPWIO" width="30%" max-width="100%">
 </p>
 
 <h1 align="center">
-MusicX : A React Music Player
+    AgliThali- An Indian Food Recommender
 </h1>
-
-# AgliThali- An Indian Food Recommender
 
 ## General info
 
-This project recommends Indian Dishes based on the input of the user using Cosine similarity algorithm.
-User can filter the results based on the diet type, states as well as the regions.
+- Recommends **Top 10 Indian Dishes** based on the input of the user using Cosine similarity algorithm
+- User can filter the dishes based on the diet type (veg/ non-veg), state and region
+- Displays a brief summary of the dish along with the recipe link
 
 ## Technologies
 
@@ -62,8 +60,17 @@ I assume that you have `git` and `virtualenv` installed.
 ## Project Screenshots:
 
 <p align="center">
-  <img src="./assets/react-integration-3.gif" width="80%" alt="react easybase integration 1">
-  <br />
-  <br />
-  <img src="./assets/users-2.gif" width="80%" alt="react easybase integration 2">
+  <img src="https://raw.githubusercontent.com/therajtiwari/AgliThali/main/screenshots/ss1.png?token=ANH3SQPPJANSJJ3KTFEQPZDAUPWHC" alt="ss1" width="80%">
+<br/>
+<br/>
+  <img src="https://raw.githubusercontent.com/therajtiwari/AgliThali/main/screenshots/ss2.png?token=ANH3SQI2KOB4V6YC6HTH5XDAUPWQU" alt="ss2"  width="80%">
+  <br/>
+  <br/>
+  <img src="https://raw.githubusercontent.com/therajtiwari/AgliThali/main/screenshots/ss3.png?token=ANH3SQI4DNWPG66X4ZAMI6LAUPWR4" alt="ss2"  width="80%">
+   <br/>
+   <br/>
+  <img src="https://raw.githubusercontent.com/therajtiwari/AgliThali/main/screenshots/ss4.png?token=ANH3SQNDUYKND7FAQN4LUKDAUPWTO" alt="ss4"  width="80%">
+        
 </p>
+
+
