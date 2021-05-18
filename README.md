@@ -61,14 +61,14 @@ I assume that you have `git` and `virtualenv` installed.
 
 <p align="center">
   <img src="screenshots/ss1.png" alt="ss1" width="80%">
-<br/>
-<br/>
+<br>
+<br>
   <img src="screenshots/ss2.png" alt="ss2"  width="80%">
-  <br/>
-  <br/>
+  <br>
+  <br>
   <img src="screenshots/ss3.png" alt="ss2"  width="80%">
-   <br/>
-   <br/>
+   <br>
+   <br>
   <img src="screenshots/ss4.png" alt="ss4"  width="80%">
         
 </p>
